@@ -34,7 +34,7 @@ Access-Control-Allow-Origin: *
 Date: Wed, 18 Dec 2013 22:03:20 GMT
 Connection: keep-alive
 ETag: f0fbae65eb2f8f28bdeea0a29be8749a4e67acb3
-Request: GET http://gateway.marvel.com/v1/public/comics?apikey=yourAPIKEY
+Request: GET https://gateway.marvel.com/v1/public/characters?ts=1&apikey=<1655f2c81e8dca444e02ba3b42f0fe73>&hash=<641c4dfbe5e4af30a645d14c4f7518e2
 Response:
 {
   "code": 200,
