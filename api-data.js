@@ -78,7 +78,7 @@ let ts ="168180292982683"
 let publicKey = "";
 let hashVal = "afcbeldde7d32a25088b712beb8b3fe0";
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import './stylesheets.css';
 import Header from './components/header/Header';
 import CharacterContainer from './components/marvels/CharacterContainer';
 import axios from 'axios';
