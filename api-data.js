@@ -35,7 +35,7 @@ callback_param({
 //Implement a function to fetch Marvel Comics characters asynchronously from the API endpoint using the Fetch API and promises. 
 //Utilize the API key and configurations obtained in Task 1. Log the fetched characters to the console.
 async function fetchMarvelCharacters() {
-    const apiKey = 'YOUR_API_KEY'; 
+    const apiKey = '1655f2c81e8dca444e02ba3b42f0fe73'; 
     const apiUrl = `https://gateway.marvel.com/v1/public/characters?ts=1&apikey=<1655f2c81e8dca444e02ba3b42f0fe73>&hash=<641c4dfbe5e4af30a645d14c4f7518e2`;
 
     try {
