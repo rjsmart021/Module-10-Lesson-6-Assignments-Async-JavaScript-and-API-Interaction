@@ -3,11 +3,6 @@
 http(s)://gateway.marvel.com/
 Request Url: http://gateway.marvel.com/v1/public/comics
 Request Method: GET
-Params: {
-Headers: {
-  Accept: */*
-Headers: {
-  Accept: */*
   If-None-Match: f0fbae65eb2f8f28bdeea0a29be8749a4e67acb3
 }
 Status Code: 304
@@ -23,7 +18,6 @@ Response:
   … [other data points]
 }
 Request: GET http://gateway.marvel.com/v1/public/comics?apikey=yourAPIKEY&callback=callback_param
-Response:
 callback_param({
   "code": 200,
   "status": "Ok",
