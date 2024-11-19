@@ -11,10 +11,6 @@ Params: {
 Headers: {
   Accept: */*
 }
-Status Code: 200
-Access-Control-Allow-Origin: *
-Date: Wed, 18 Dec 2013 22:00:55 GMT
-Connection: keep-alive
 ETag: f0fbae65eb2f8f28bdeea0a29be8749a4e67acb3
 Content-Length: 54943
 Content-Type: application/json
