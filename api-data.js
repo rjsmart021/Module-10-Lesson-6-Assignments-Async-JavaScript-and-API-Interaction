@@ -4,30 +4,13 @@ http(s)://gateway.marvel.com/
 Request Url: http://gateway.marvel.com/v1/public/comics
 Request Method: GET
 Params: {
-  "apikey": "your api key",
-  "ts": "a timestamp",
-  "hash": "your hash"
-}
 Headers: {
   Accept: */*
-}
-ETag: f0fbae65eb2f8f28bdeea0a29be8749a4e67acb3
-Content-Length: 54943
-Content-Type: application/json
-Request Url: http://gateway.marvel.com/v1/public/comics
-Request Method: GET
-Params: {
-  "apikey": "your api key",
-  "ts": "a timestamp",
-  "hash": "your hash"
-}
 Headers: {
   Accept: */*
   If-None-Match: f0fbae65eb2f8f28bdeea0a29be8749a4e67acb3
 }
 Status Code: 304
-Access-Control-Allow-Origin: *
-Date: Wed, 18 Dec 2013 22:03:20 GMT
 Connection: keep-alive
 ETag: f0fbae65eb2f8f28bdeea0a29be8749a4e67acb3
 Request: GET https://gateway.marvel.com/v1/public/characters?ts=1&apikey=<1655f2c81e8dca444e02ba3b42f0fe73>&hash=<641c4dfbe5e4af30a645d14c4f7518e2
