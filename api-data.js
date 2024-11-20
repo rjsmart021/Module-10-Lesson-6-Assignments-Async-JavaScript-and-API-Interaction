@@ -3,29 +3,7 @@
 http(s)://gateway.marvel.com/
 Request Url: http://gateway.marvel.com/v1/public/comics
 Request Method: GET
-  If-None-Match: f0fbae65eb2f8f28bdeea0a29be8749a4e67acb3
-}
-Status Code: 304
-Connection: keep-alive
-ETag: f0fbae65eb2f8f28bdeea0a29be8749a4e67acb3
 Request: GET https://gateway.marvel.com/v1/public/characters?ts=1&apikey=<1655f2c81e8dca444e02ba3b42f0fe73>&hash=<641c4dfbe5e4af30a645d14c4f7518e2
-Response:
-{
-  "code": 200,
-  "status": "Ok",
-  "etag": "f0fbae65eb2f8f28bdeea0a29be8749a4e67acb3",
-  "data": {
-  … [other data points]
-}
-Request: GET http://gateway.marvel.com/v1/public/comics?apikey=yourAPIKEY&callback=callback_param
-callback_param({
-  "code": 200,
-  "status": "Ok",
-  "etag": "f0fbae65eb2f8f28bdeea0a29be8749a4e67acb3",
-  "data": {
-  … [other data points]
-})
-//Task 2: Fetching Characters Using Fetch API
 //Implement a function to fetch Marvel Comics characters asynchronously from the API endpoint using the Fetch API and promises. 
 //Utilize the API key and configurations obtained in Task 1. Log the fetched characters to the console.
 async function fetchMarvelCharacters() {
@@ -33,7 +11,7 @@ async function fetchMarvelCharacters() {
     const apiUrl = `https://gateway.marvel.com/v1/public/characters?ts=1&apikey=<1655f2c81e8dca444e02ba3b42f0fe73>&hash=<641c4dfbe5e4af30a645d14c4f7518e2`;
 
     try {
-        const response = await fetch(apiUrl);
+        const response = await fetch(https://gateway.marvel.com/v1/public/characters?ts=1&apikey=<1655f2c81e8dca444e02ba3b42f0fe73>&hash=<641c4dfbe5e4af30a645d14c4f7518e2);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
