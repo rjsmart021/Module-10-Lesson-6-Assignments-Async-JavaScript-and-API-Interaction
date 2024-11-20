@@ -6,7 +6,6 @@ function showNotification(message, delay) {
     }, delay);
 }
 
-// Example usage:
 showNotification('This is your notification!', 3000); // Displays the notification after 3 seconds
 
 //Task 3: Repeat Notification
@@ -25,30 +24,24 @@ function startNotifications() {
         }
     }
 
-    // Check if the browser supports notifications
     if (!("Notification" in window)) {
         alert("This browser does not support desktop notifications.");
     } else {
-        // Request permission to show notifications
         Notification.requestPermission().then(permission => {
             if (permission === "granted") {
-                // Set an interval to show the notification every 5 seconds
                 const notificationInterval = setInterval(showNotification, 5000);
 
-                // Function to stop the notifications
                 function stopNotifications() {
                     clearInterval(notificationInterval);
                     alert("Notifications stopped.");
                 }
 
-                // Add an event listener to stop notifications when the user clicks a button
                 document.getElementById("stopButton").addEventListener("click", stopNotifications);
             }
         });
     }
 }
 
-// Call the function to start notifications
 startNotifications();
 
 
