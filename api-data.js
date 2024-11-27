@@ -1,75 +1,53 @@
-//1. Exploring Asynchronous JavaScript
-//Task 1: Obtaining API Key and Configuration
-http(s)://gateway.marvel.com/
-Request Url: http://gateway.marvel.com/v1/public/comics
-Request Method: GET
-Request: GET https://gateway.marvel.com/v1/public/characters?ts=1&apikey=<1655f2c81e8dca444e02ba3b42f0fe73>&hash=<641c4dfbe5e4af30a645d14c4f7518e2
-//Implement a function to fetch Marvel Comics characters asynchronously from the API endpoint using the Fetch API and promises. 
-//Utilize the API key and configurations obtained in Task 1. Log the fetched characters to the console.
+const apiKey = 'c7a8cfddc24b8ccbd0b5edb811abd9c0'; // Your public API key
+const baseUrl = 'https://gateway.marvel.com/v1/public/characters';
+
 async function fetchMarvelCharacters() {
-    const apiKey = '1655f2c81e8dca444e02ba3b42f0fe73'; 
-    const apiUrl = `https://gateway.marvel.com/v1/public/characters?ts=1&apikey=<1655f2c81e8dca444e02ba3b42f0fe73>&hash=<641c4dfbe5e4af30a645d14c4f7518e2`;
-
     try {
-        const response = await fetch(https://gateway.marvel.com/v1/public/characters?ts=1&apikey=<1655f2c81e8dca444e02ba3b42f0fe73>&hash=<641c4dfbe5e4af30a645d14c4f7518e2);
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        return data.data.results; // Returns the array of characters
+        const characterNames = ['Spider-Man', 'Iron Man', 'Captain America'];
+        const characterPromises = characterNames.map(name => 
+            fetch(`${baseUrl}?name=${encodeURIComponent(name)}&apikey=${apiKey}`)
+        );
+
+        const responses = await Promise.all(characterPromises);
+        const dataPromises = responses.map(response => response.json());
+        const charactersData = await Promise.all(dataPromises);
+        
+        const characters = charactersData.map(data => data.data.results[0]); // Get the first result for each character
+        console.log(characters); // Log the characters to the console
+        return characters;
     } catch (error) {
-        console.error('Fetch error:', error);
+        console.error('Error fetching Marvel characters:', error);
     }
 }
 
-// Example usage
-fetchMarvelCharacters().then(characters => {
-    console.log(characters);
-});
-let ts ="168180292982683"
-let publicKey = "";
-let hashVal = "afcbeldde7d32a25088b712beb8b3fe0";
-import React, { useEffect, useState } from 'react';
-import './stylesheets.css';
-import Header from './components/header/Header';
-import CharacterContainer from './components/marvels/CharacterContainer';
-import axios from 'axios';
-import { notification } from 'antd'
+async function updateUIWithCharacters() {
+    const characters = await fetchMarvelCharacters(); // Fetch characters first
+    const container = document.getElementById('characters-container');
 
-export const UserContext = React.createContext();
-const App = () => {
-  const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+    if (characters && characters.length > 0) {
+        characters.forEach(character => {
+            const characterDiv = document.createElement('div');
+            characterDiv.className = 'character';
 
-  useEffect(() => {
-    const fetchMarvelCharacters = async() => {
-      try{
-        let baseUrl = `${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_API_KEY}`;
-        let result = await axios(baseUrl);
-        setItems(result.data.data.results)
-      } catch(ex) {
-        setItems([]);
-        notification.error({
-          message: 'Failed to fetch marvel characters',
-          description: ex.message,
-          placement: 'top',
+            const nameElement = document.createElement('h3');
+            nameElement.textContent = character.name;
+            characterDiv.appendChild(nameElement);
+
+            const imgElement = document.createElement('img');
+            imgElement.src = `${character.thumbnail.path}.${character.thumbnail.extension}`;
+            imgElement.alt = `${character.name}`;
+            characterDiv.appendChild(imgElement);
+
+            const descriptionElement = document.createElement('p');
+            descriptionElement.textContent = character.description || 'No description available.';
+            characterDiv.appendChild(descriptionElement);
+
+            container.appendChild(characterDiv);
         });
-      } finally {
-        setIsLoading(false)
-      }   
+    } else {
+        container.innerHTML = '<p>No characters found.</p>';
     }
-
-    fetchCharacters();
-  }, []);
-
-  return (
-    <div className="container">
-      <UserContext.Provider value={items}>
-        <Header/>
-        <CharacterContainer items={items} isLoading={isLoading}/>
-      </UserContext.Provider>
-    </div>
-  );
 }
 
-export default App;
+// Call the function to fetch characters and update the UI
+updateUIWithCharacters();
